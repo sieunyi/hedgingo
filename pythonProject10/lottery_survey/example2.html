@@ -1,0 +1,25 @@
+{% extends "global/Page.html" %}
+{% block title %}Explicación de la proporción de inversión:{% endblock %}
+{% block content %}
+   <div class="container">
+<div class="mt-3">
+
+    <p>Puedes ajustar la proporción de tu inversión en la Lotería 1 moviendo el control deslizante arriba.</p>
+    <ul>
+        <li>Si el valor es 0: Usted asigna todo su dinero a la Lotería 2.</li>
+        <li>Si el valor es 1: Usted asigna todo su dinero a la Lotería 1.</li>
+        <li>Valores intermedios representan una asignación proporcional entre ambas loterías.</li>
+    </ul>
+    <p>Por ejemplo, si el valor es 0.3, usted asigna el 30% de su dinero a la Lotería 1 y el 70% a la Lotería 2.</p>
+</div>
+
+
+
+ <p>Remember, your final payment will be based on your performance across all 45 rounds, so make each decision thoughtfully.</p>
+
+ <p>If you're ready to begin, please click the "Next" button below.</p>
+
+ {% next_button %}
+
+   </div>
+{% endblock %}

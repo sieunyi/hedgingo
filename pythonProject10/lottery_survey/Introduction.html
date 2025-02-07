@@ -1,0 +1,36 @@
+{% extends "global/Page.html" %}
+{% block title %}Game Rules{% endblock %}
+{% block content %}
+   <div class="container">
+
+        <p>Here's how the game works:</p>
+        <ol>
+            <li>
+                <strong>Your Goal:</strong> Divide your money between two lotteries.
+            </li>
+            <li>
+                <strong>About the Lotteries:</strong>
+                <ul>
+                    <li>Lottery 1 and Lottery 2 are like a see-saw:</li>
+                    <li>When one goes up, the other goes down.</li>
+                    <li>This happens randomly each round.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>The Mechanics:</strong>
+                <ul>
+                    <li>With a probability of p: Lottery 1's price decreases, Lottery 2's price increases.</li>
+                    <li>With a probability of 1-p: Lottery 1's price increases, Lottery 2's price decreases.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>How to Play:</strong>
+                <ul>
+                    <li>Use a simple slider to decide how much money to put in Lottery 1.</li>
+                    <li>The remaining portion will automatically go to Lottery 2.</li>
+                </ul>
+            </li>
+        </ol>
+        {% next_button %}
+    </div>
+{% endblock %}

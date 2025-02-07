@@ -1,0 +1,39 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Reflexión Cognitiva
+{% endblock %}
+
+{% block content %}
+
+<ol>
+    <li class="mb-3">
+        <p>Linda tiene 31 años, es soltera, extrovertida y muy inteligente. Se graduó en filosofía. Como estudiante, estaba profundamente preocupada por temas de discriminación y justicia social, y también participó en manifestaciones antinucleares.</p>
+        {% formfield player.crt_linda %}
+    </li>
+
+    <li class="mb-3">
+        <p>Un bate y una pelota cuestan 440 pesos mexicanos en total. El bate cuesta 400 pesos mexicanos más que la pelota.</p>
+        {% formfield player.crt_bat %}
+    </li>
+
+    <li class="mb-3">
+        <p>Si 5 máquinas tardan 5 minutos en hacer 5 widgets,</p>
+        {% formfield player.crt_widget %}
+    </li>
+
+    <li class="mb-3">
+        <p>En un lago, hay un grupo de nenúfares. Cada día, el grupo duplica su tamaño. Si tarda 48 días en cubrir todo el lago,</p>
+        {% formfield player.crt_lake %}
+    </li>
+
+    <li class="mb-3">
+        <p>Supón que en el año 2021, tu ingreso se ha duplicado y los precios de todos los bienes también se han duplicado.</p>
+        {% formfield player.crt_double %}
+    </li>
+</ol>
+
+{% next_button %}
+
+{% endblock %}

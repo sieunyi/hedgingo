@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% block title %}Example:{% endblock %}
+{% block content %}
+   <div class="container">
+     <ol>
+       On the page, you will see the possible outcomes for each lottery and the expected value of your choice.
+
+<li>With probability of p, Lottery 1's price decreases but Lottery 2's price increases.</li>
+   <img src="{{ static 'images/page1.png' }}" alt="Lottery 1 increase, Lottery 2 decrease" style="max-width: 100%; height: auto; margin: 10px 0;">
+
+   <li>With probability of 1-p, Lottery 1's price increases but Lottery 2's price decreases.</li>
+   <img src="{{ static 'images/page2.png' }}" alt="Lottery 1 decrease, Lottery 2 increase" style="max-width: 100%; height: auto; margin: 10px 0;">
+
+   <li>At the bottom left of the page, a pie chart will illustrate the probabilities (p and 1-p) associated with the outcomes.</li>
+   <img src="{{ static 'images/page3.png' }}" alt="Pie chart of probabilities" style="max-width: 100%; height: auto; margin: 10px 0;">
+
+   <li>Next to the pie chart, expected values of your chosen allocation will be calculated taking into account the α value you selected.</li>
+   <img src="{{ static 'images/page4.png' }}" alt="Expected values calculation" style="max-width: 100%; height: auto; margin: 10px 0;">
+ </ol>
+
+ {% next_button %}
+
+   </div>
+{% endblock %}

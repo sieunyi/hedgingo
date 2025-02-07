@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Escenarios de Toma de Decisiones
+{% endblock %}
+
+{% block content %}
+
+<ol>
+    <li class="mb-3">
+        <p>Imagina que obtendrás $100 si puedes adivinar correctamente el color de una bola extraída al azar de un frasco. Puedes elegir entre dos frascos, ambos tienen diez bolas y cada bola es roja o negra. El frasco 1 tiene 5 bolas rojas y 5 bolas negras. El número de bolas negras en el frasco 2 se determinó de la siguiente manera: Se extrajo un ticket de una bolsa que contenía 11 tickets con los números del 0 al 10 escritos en ellos. El número escrito en el ticket extraído determinó el número de bolas negras. Puedes elegir si la bola extraída al azar proviene del frasco 1 o del frasco 2.</p>
+        {% formfield player.scenario_jar %}
+    </li>
+
+    <li class="mb-3">
+        <p>Imagina que estás en un concurso de televisión y te dan a elegir entre tres puertas. Detrás de una puerta hay un coche; detrás de las otras, cabras. Eliges una puerta, digamos la número 1, y el presentador, que sabe lo que hay detrás de las puertas, abre otra puerta, digamos la número 3, que tiene una cabra. Luego te dice: "¿Quieres elegir la puerta número 2?" ¿Te conviene cambiar tu elección?</p>
+        {% formfield player.monty_hall %}
+    </li>
+</ol>
+
+{% next_button %}
+
+{% endblock %}
