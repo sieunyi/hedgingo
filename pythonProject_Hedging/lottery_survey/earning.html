@@ -1,0 +1,37 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Calculation of Potential Outcome
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+
+        <h5>Your <strong> potential outcome </strong> is calculated based on your choice and the probability of the events.</h5>
+        <h5> Here is a simple example to see how it is calculated:</h5>
+
+        <p>Suppose you invest 50% in Investment A:</p>
+
+        <ul>
+            <li>Investment A: Can give +10 or -5</li>
+            <li>Investment B: Can give +5 or -2</li>
+            <li>Probability of good outcome = 0.5 (50% chance)</li>
+        </ul>
+
+        <h5>Your potential outcome is calculated based on your choice and the probability of the events.</h5>
+
+        <p><strong>Bad Scenario (50% chance):</strong><br>
+        50% × (-5) + 50% × (+5) = -2.5 + 2.5 = 0</p>
+
+        <p><strong>Good Scenario (50% chance):</strong><br>
+        50% × (+10) + 50% × (-2) = +5 - 1 = 4</p>
+
+        <p><strong>Final Expected Outcome:</strong><br>
+        50% × (0) + 50% × (4) = 2</p>
+    </div>
+</div>
+
+{% next_button %}
+{% endblock %}

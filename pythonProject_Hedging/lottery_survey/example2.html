@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+
+{% block title %}Information Screen:{% endblock %}
+
+{% block content %}
+<li>  This is the screen capture of an actual experiment. </li>
+<li>  First part gives you an information about your investment options.   </li>
+<li>  At the bottom of the screen, you can see the probabilities of the events. </li>
+<li>  Your potential outcome changes based on your choice, so refer to this section to understand how your earnings might vary. </li>
+<div>
+      <img src="{{ static 'images/screen1.png' }}" alt="" style="max-width: 110%; max-height: 600px;">
+
+</div>
+
+{% next_button %}
+
+{% endblock %}
+
