@@ -1,0 +1,42 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Summary: Calculation of Potential Outcome
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-body">
+        Using the example we have seen so far:
+        <ul>
+            <li>Apple: Can give +10 or -10</li>
+            <li>Banana: Can give +10 or -10</li>
+            <li>Chances of one event (p) = 0.5 (50% chance)</li>
+        </ul>
+
+        <h5><strong>Potential outcome</strong> is calculated based on your choice.</h5>
+
+        <p>Suppose you invest 80% in Apple and 20% in Banana.</p>
+
+        <div class="mt-3">
+            <span class="text-muted">With 50% chance:</span><br>
+            <span class="text-success">0.8 × Apple poor (-10)</span> +
+            <span class="text-danger">0.2 × Banana well (10)</span> = -6
+        </div>
+
+        <div class="mt-2">
+            <span class="text-muted">With 50% chance:</span><br>
+            <span class="text-success">0.8 × Apple well (10)</span> +
+            <span class="text-danger">0.2 × Banana poor (-10)</span> = 6
+        </div>
+
+        <div class="mt-3">
+            <p><strong>Your calculated potential outcome is:</strong> <br>
+            50% × (-6) + 50% × (6) = <strong>0</strong></p>
+        </div>
+    </div>
+</div>
+
+{% next_button %}
+{% endblock %}

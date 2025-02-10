@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% block title %}Task{% endblock %}
+{% block content %}
+<ul style="font-size: 1.25rem; line-height: 1.5;">
+    <li>Your task is to allocate your asset between two investment options: <strong style="color: darkred;">Lottery 1 (L1)</strong> and <strong style="color: darkgreen;">Lottery 2 (L2)</strong>.</li>
+    <li>The lotteries have an <strong>inverse relationship</strong>:</li>
+    <ul>
+        <li>With a chance of <strong>p</strong>: <strong style="color: darkred;">L1</strong> performs poorly (-), <strong style="color: darkgreen;">L2</strong> performs well (+)</li>
+        <li>With a chance of <strong>(1-p)</strong>: <strong style="color: darkred;">L1</strong> performs well (+), <strong style="color: darkgreen;">L2</strong> performs poorly (-)</li>
+    </ul>
+    <li>Each round has different chances and outcomes, so review them carefully.</li>
+    <li>Every task has an interactive visual aid to assist with picking your preferred <strong>choice</strong>.</li>
+    <li><strong>Important:</strong> Use the <strong>slider</strong> to set your allocation.</li>
+</ul>
+        {% next_button %}
+    </div>
+{% endblock %}
