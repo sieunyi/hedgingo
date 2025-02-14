@@ -1,0 +1,130 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Example: Investment Option 2
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Initial instructions -->
+<div class="row justify-content-center mb-4">
+    <div class="col-md-12">
+        <ul>
+            <li>There is another investment option called <strong>Banana</strong>.</li>
+            <li>It has a <strong>p%</strong> chance of <u>returning 10 bananas</u> and a <strong>(100-p)%</strong> chance of <u>losing 10 bananas</u>.</li>
+            <li>After selecting your allocation in <strong>Apple</strong> using the slider, the remaining portion automatically goes to <strong>Banana</strong>.</li>
+            <li>Moving the slider to the right increases your allocation to <strong>Banana</strong>.</li>
+            <li>Please allocate 0.2 to <strong>Banana</strong>. You have to invest 0.8 in <strong>Apple</strong> and select "0.8" on the slider.</li>
+        </ul>
+    </div>
+</div>
+
+    <!-- Main content row -->
+    <div class="row justify-content-center align-items-center">
+        <!-- Slider and Form Control -->
+        <div class="col-md-4">
+            <div class="d-flex flex-column justify-content-center">
+                <label for="alpha_slider">
+                    <strong>Please choose your investment portion in Apple.</strong>
+                </label>
+                <input type="range"
+                       min="0.01"
+                       max="1"
+                       step="0.01"
+                       id="alpha_slider"
+                       oninput="updateAlphaFromSlider(this.value)"
+                       style="width: 100%;">
+
+                <div class="d-flex justify-content-between mt-2" style="font-size: 0.7em;">
+                    <span>1</span>
+                    <span>0.8</span>
+                    <span>0.6</span>
+                    <span>0.4</span>
+                    <span>0.2</span>
+                    <span>0.01</span>
+                </div>
+
+                <div class="mt-3">
+                    <label for="alpha_input"> Remaining goes to Banana:</label>
+                    <input type="number"
+                           id="alpha_input"
+                           min="0.01"
+                           max="1"
+                           step="0.01"
+                           oninput="validateAlpha()"
+                           class="form-control">
+                </div>
+
+                <div id="error_message" class="text-danger mt-2" style="display: none;"></div>
+                <input type="hidden" name="alpha" id="id_alpha">
+            </div>
+        </div>
+
+        <!-- Banana image -->
+        <div class="col-md-4">
+            <div style="height: 250px; width: 100%;">
+                <p class="text-center mt-2"><strong>Banana</strong></p>
+                <img src="{% static 'images/bananastock.png' %}" 
+                     alt="Banana" 
+                     style="max-width: 100%; max-height: 230px;">
+            </div>
+        </div>
+    </div>
+
+    <!-- Next button -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            {% next_button %}
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+    function updateAlphaFromSlider(value) {
+        document.getElementById('alpha_input').value = value;
+        document.getElementById('id_alpha').value = value;
+    }
+
+    function validateAlpha() {
+        const input = document.getElementById('alpha_input');
+        const value = parseFloat(input.value);
+        const errorMessage = document.getElementById('error_message');
+        const slider = document.getElementById('alpha_slider');
+        const hiddenInput = document.getElementById('id_alpha');
+
+        if (isNaN(value) || value < 0.01 || value > 1) {
+            errorMessage.textContent = 'Please enter a value between 0.01 and 1';
+            errorMessage.style.display = 'block';
+            return false;
+        }
+
+        errorMessage.style.display = 'none';
+        slider.value = value;
+        hiddenInput.value = value;
+        return true;
+    }
+
+    // Initialize with a default value when the page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        const defaultValue = 0.5;
+        const elements = ['alpha_slider', 'alpha_input', 'id_alpha'];
+        elements.forEach(id => {
+            document.getElementById(id).value = defaultValue;
+        });
+    });
+</script>
+
+<!-- Styles -->
+<style>
+    canvas {
+        max-width: 20%;
+        height: auto !important;
+    }
+
+    .form-control {
+        width: 100%;  /* Changed from 20% to make it more responsive */
+    }
+</style>
+{% endblock %}

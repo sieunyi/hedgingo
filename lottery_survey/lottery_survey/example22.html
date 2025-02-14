@@ -1,0 +1,80 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Example: Chance of the Events
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <!-- Left column with image -->
+        <div class="col-md-7 text-center">
+            <img src="{% static 'images/probability.png' %}"
+                 alt="Probability Chart"
+                 class="img-fluid"
+                 style="max-height: 400px;">
+        </div>
+
+        <!-- Right column with information -->
+        <div class="col-md-7">
+            <!-- Brief introduction -->
+            <h5>This chart displays the chances of the two events.</h5>
+
+            <!-- Probability explanations -->
+            <div class="row g-2 mb-2">
+
+                <div class="col-md-6">
+                    <div class="p-2 rounded" style="background-color: #FDF5F0;">
+                        <p style="color: #D4844A; font-weight: 500;">
+                            '100-p' is the chance of:
+                            <br>• <strong>Apple</strong> performing well (+)
+                            <br>• <strong>Banana </strong> performing poor (-)
+                        </p>
+                    </div>
+                </div>
+
+                           <div class="col-md-6">
+                    <div class="p-2 rounded" style="background-color: #EEF2F9;">
+                        <p style="color: #2E5CB8; font-weight: 500;">
+                            'p' is the chance of:
+                            <br>• <strong>Apple</strong> performing poor (-)
+                            <br>• <strong>Banana </strong>performing well (+)
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Expected value calculation -->
+            <div class="bg-light p-2 rounded">
+
+                <p class="mb-1">This chance is used to calculate the expected outcome of the lottery.</p>
+                <p class="mb-1">For instance, <strong>Apple</strong>'s expected outcome is:</p>
+                <p class="text-center mb-0">50% × (-10) + 50% × 10 = 0</p>
+                 <p class="mb-1"> <strong>Banana</strong>'s expected outcome is:</p>
+                <p class="text-center mb-0">50% × (10) + 50% × (-10) = 0</p>
+                <p> <strong>Important:</strong>  These chances change over rounds.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Next button -->
+    <div class="text-center mt-3">
+        {% next_button %}
+    </div>
+</div>
+
+<style>
+    .container-fluid {
+        padding: 20px;
+    }
+
+    .img-fluid {
+        margin-bottom: 20px;
+    }
+
+    p {
+        margin-bottom: 10px;
+    }
+</style>
+{% endblock %}

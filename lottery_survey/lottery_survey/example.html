@@ -1,0 +1,116 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Example: Investment Option 1
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Initial instructions -->
+    <div class="row justify-content-center mb-4">
+        <div class="col-md-12">
+            <ul>
+                <li>There is an investment option 1, <strong>Apple</strong>.</li>
+                <li>The maximum allocation you can invest in <strong>Apple</strong> is 1 (100%).</li>
+                                <li>The minimum allocation you can invest in <strong>Apple</strong> is 0.01 (1%).</li>
+                <li>There is a <strong>p%</strong> chance that <strong>Apple</strong> will <u>return 10 apples</u> and a <strong>(100-p)%</strong> chance that you will <u>lose 10 apples</u>.</li>
+                <li> Moving the slider to the left increases your allocation to <strong>Apple</strong>.</li>
+                <li> Please choose "0.8" to invest 80% of your assets in <strong>Apple</strong>.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Main content row -->
+    <div class="row justify-content-center align-items-center">
+        <!-- Apple image -->
+        <div class="col-md-4">
+            <div style="height: 250px; width: 100%;">
+                <p class="text-center mt-2"><strong>Apple</strong></p>
+                <img src="{{ static 'images/applestock.png' }}" alt="Apple" style="max-width: 100%; max-height: 250px;">
+            </div>
+        </div>
+
+        <!-- Slider -->
+        <div class="col-md-4">
+            <div class="d-flex flex-column justify-content-center">
+                <label for="alpha_slider"><strong>Please choose your investment portion in Apple.</strong></label>
+                <input type="range" min="0.01" max="1" step="0.01" id="alpha_slider"
+                       oninput="updateAlphaFromSlider(this.value)" style="width: 100%;">
+                <div class="d-flex justify-content-between mt-2" style="font-size: 0.7em;">
+                    <span>1</span>
+                    <span>0.8</span>
+                    <span>0.6</span>
+                    <span>0.4</span>
+                    <span>0.2</span>
+                    <span>0.01</span>
+                </div>
+                <div class="mt-3">
+                     <label for="alpha_input">Confirm your investment in Apple:</label>
+
+                    <input type="number" id="alpha_input" min="0.01" max="1" step="0.01"
+                           oninput="validateAlpha()" class="form-control">
+                </div>
+
+                <div id="error_message" class="text-danger mt-2" style="display: none;"></div>
+                <input type="hidden" name="alpha" id="id_alpha">
+            </div>
+        </div>
+    </div>
+
+    <!-- Next button -->
+    <div class="row mt-4">
+        <div class="col-md-12">
+            {% next_button %}
+        </div>
+    </div>
+</div>
+
+<script>
+function updateAlphaFromSlider(value) {
+    // Reverse the value (1 - value) to make slider work in opposite direction
+    const reversedValue = (1 - parseFloat(value) + 0.01).toFixed(2);
+    // Update the form control input with the reversed value
+    document.getElementById('alpha_input').value = reversedValue;
+    // Update the hidden input
+    document.getElementById('id_alpha').value = reversedValue;
+}
+
+function validateAlpha() {
+    const input = document.getElementById('alpha_input');
+    const value = parseFloat(input.value);
+    const errorMessage = document.getElementById('error_message');
+
+    if (isNaN(value) || value < 0.01 || value > 1) {
+        errorMessage.textContent = 'Please enter a value between 0.01 and 1';
+        errorMessage.style.display = 'block';
+        return false;
+    }
+
+    errorMessage.style.display = 'none';
+    // Reverse the value for the slider
+    document.getElementById('alpha_slider').value = (1 - value + 0.01).toFixed(2);
+    document.getElementById('id_alpha').value = value;
+    return true;
+}
+
+// Initialize with a default value when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    const defaultValue = 0.5;
+    document.getElementById('alpha_slider').value = 1 - defaultValue + 0.01;
+    document.getElementById('alpha_input').value = defaultValue;
+    document.getElementById('id_alpha').value = defaultValue;
+});
+</script>
+
+<style>
+    canvas {
+        max-width: 20%;
+        height: auto !important;
+    }
+
+    .form-control {
+        width: 20%;
+    }
+</style>
+{% endblock %}
