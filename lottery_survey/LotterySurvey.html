@@ -12,8 +12,8 @@
             <p> Use the slider to select the percentage of your assets to allocate to L1; the remaining amount will automatically be assigned to L2.</p>
             <ul>
        <ul>
-                <li>With a chance of <strong>{{ p }}</strong>, <strong>L1</strong> yields {{ x1_l }}, while <strong>L2</strong> yields {{ x2_h }}.</li>
-                <li>With a chance of <strong>{{ one_minus_p }}</strong>, <strong>L1</strong> yields {{ x1_h }}, while <strong>L2</strong> yields {{ x2_l }}.</li>
+                <li>With <strong>{{ p }}</strong> chance, <strong>L1</strong> yields {{ x1_l }}, while <strong>L2</strong> yields {{ x2_h }}.</li>
+                <li>With <strong>{{ one_minus_p }}</strong> chance, <strong>L1</strong> yields {{ x1_h }}, while <strong>L2</strong> yields {{ x2_l }}.</li>
             </ul>
         </div>
     </div>
@@ -291,10 +291,10 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     var pie_chart = createChart(document.getElementById('probability_pie').getContext('2d'), 'pie', {
-        labels: ['p', '1-p'],
+        labels: ['1-p', 'p'],
         datasets: [{
-            data: [{{ p }}, {{ one_minus_p }}],
-            backgroundColor: [softBlue, mutedOrange],
+            data: [{{ one_minus_p }}, {{ p }}],
+            backgroundColor: [mutedOrange, softBlue],
             borderWidth: 0
         }]
     }, {

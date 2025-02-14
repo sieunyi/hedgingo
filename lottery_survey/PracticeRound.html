@@ -279,10 +279,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     var pie_chart = createChart(document.getElementById('probability_pie').getContext('2d'), 'pie', {
-        labels: ['p', '1-p'],
+        labels: ['1-p', 'p'],
         datasets: [{
-            data: [{{ p }}, {{ one_minus_p }}],
-            backgroundColor: [softBlue, mutedOrange],
+            data: [ {{ one_minus_p }}, {{ p }}],
+            backgroundColor: [mutedOrange, softBlue],
             borderWidth: 0
         }]
     }, {
