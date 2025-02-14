@@ -22,13 +22,13 @@ class Roulette(Page):
             alpha = 1  # Default value if alpha is not set
 
         p = round(scenario['p_values'][round_in_scenario], 2)
-        one_minus_p = round(1 - p, 2)  # Fixed: use p instead of player.p
+        one_minus_p = round(100 - p, 2)  # Fixed: use p instead of player.p
         x1_l = scenario['x1_l_values'][round_in_scenario]
         x1_h = scenario['x1_h_values'][round_in_scenario]
         x2_l = scenario['x2_l_values'][round_in_scenario]
         x2_h = scenario['x2_h_values'][round_in_scenario]
 
-        expected_value = (p * (alpha * x1_l + (1 - alpha) * x2_h) + one_minus_p * (alpha * x1_h + (1 - alpha) * x2_l))
+        expected_value = (p/100 * (alpha * x1_l + (1 - alpha) * x2_h) + (one_minus_p)/100 * (alpha * x1_h + (1 - alpha) * x2_l))
 
         return {
             'selected_round': selected_round,
@@ -77,7 +77,7 @@ class LotterySurvey(Page):
 
         # Calculate p and one_minus_p with rounding to avoid floating-point precision issues
         p = round(scenario['p_values'][round_in_scenario], 2)
-        one_minus_p = round(1 - p, 2)
+        one_minus_p = round(100 - p, 2)
 
         vars_dict = {
             'round_number': self.round_number,
@@ -248,9 +248,9 @@ class ComprehensionCheck(Page):
 
     def error_message(self, values):
         errors = {}
-        if values['question_1'] != '20%':
+        if values['question_1'] != '0.2':
             errors['question_1'] = 'This answer is incorrect'
-        if values['question_2'] != 'When L1 increases, L2 decreases (Inverse Relationship)':
+        if values['question_2'] != 'When Option 1 increases, Option 2 decreases (Inverse Relationship)':
             errors['question_2'] = 'This answer is incorrect'
         if values['question_3'] != '50% * 10 + 50% * (-10) = 0':
             errors['question_3'] = 'This answer is incorrect'

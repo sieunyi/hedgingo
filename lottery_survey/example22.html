@@ -2,7 +2,7 @@
 {% load otree static %}
 
 {% block title %}
-    Example: Chances of the Events
+    Example: Chance of the Events
 {% endblock %}
 
 {% block content %}
@@ -23,21 +23,23 @@
 
             <!-- Probability explanations -->
             <div class="row g-2 mb-2">
+
                 <div class="col-md-6">
+                    <div class="p-2 rounded" style="background-color: #FDF5F0;">
+                        <p style="color: #D4844A; font-weight: 500;">
+                            '100-p' is the chance of:
+                            <br>• <strong>Apple</strong> performing well (+)
+                            <br>• <strong>Banana </strong> performing poor (-)
+                        </p>
+                    </div>
+                </div>
+
+                           <div class="col-md-6">
                     <div class="p-2 rounded" style="background-color: #EEF2F9;">
                         <p style="color: #2E5CB8; font-weight: 500;">
                             'p' is the chance of:
                             <br>• <strong>Apple</strong> performing poor (-)
                             <br>• <strong>Banana </strong>performing well (+)
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="p-2 rounded" style="background-color: #FDF5F0;">
-                        <p style="color: #D4844A; font-weight: 500;">
-                            '1-p' is the chance of:
-                            <br>• <strong>Apple</strong> performing well (+)
-                            <br>• <strong>Banana </strong> performing poor (-)
                         </p>
                     </div>
                 </div>
